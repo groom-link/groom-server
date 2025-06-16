@@ -1,6 +1,6 @@
-package com.groom.infrastructure.auth.authentication
+package com.groom.auth.infrastructure
 
-import com.groom.domain.auth.AuthenticationRole
+import com.groom.auth.domain.authentication.AuthenticationRole
 import com.groom.infrastructure.common.EntityTimeStamp
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType

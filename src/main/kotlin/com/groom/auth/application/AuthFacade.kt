@@ -1,8 +1,8 @@
-package com.groom.application.auth
+package com.groom.auth.application
 
-import com.groom.domain.auth.Authentication
-import com.groom.domain.auth.AuthenticationService
-import com.groom.domain.auth.OAuth2UserInformationService
+import com.groom.auth.domain.authentication.Authentication
+import com.groom.auth.domain.authentication.AuthenticationService
+import com.groom.auth.domain.oauth2.OAuth2UserInformationService
 import com.groom.domain.user.UserCommand
 import com.groom.domain.user.UserService
 import org.springframework.stereotype.Component

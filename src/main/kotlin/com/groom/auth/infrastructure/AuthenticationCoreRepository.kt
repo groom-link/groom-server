@@ -1,8 +1,8 @@
-package com.groom.infrastructure.auth.authentication
+package com.groom.auth.infrastructure
 
-import com.groom.domain.auth.Authentication
-import com.groom.domain.auth.AuthenticationRepository
-import com.groom.domain.auth.AuthenticationRole
+import com.groom.auth.domain.authentication.Authentication
+import com.groom.auth.domain.authentication.AuthenticationRepository
+import com.groom.auth.domain.authentication.AuthenticationRole
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository

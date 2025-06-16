@@ -1,4 +1,4 @@
-package com.groom.infrastructure.auth.oauth2
+package com.groom.auth.infrastructure.oauth2
 
 import com.fasterxml.jackson.annotation.JsonProperty
 

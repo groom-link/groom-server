@@ -1,4 +1,4 @@
-package com.groom.domain.auth
+package com.groom.auth.domain.oauth2
 
 enum class OAuth2ProviderName {
     KAKAO, APPLE;

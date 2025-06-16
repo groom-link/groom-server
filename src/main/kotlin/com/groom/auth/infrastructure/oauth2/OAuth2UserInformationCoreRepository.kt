@@ -1,15 +1,16 @@
-package com.groom.infrastructure.auth.oauth2
+package com.groom.auth.infrastructure.oauth2
 
-import com.groom.domain.auth.OAuth2ProviderName
-import com.groom.domain.auth.OAuth2UserInformation
-import com.groom.domain.auth.OAuth2UserInformationCommand
-import com.groom.domain.auth.OAuth2UserInformationRepository
+import com.groom.auth.domain.oauth2.OAuth2ProviderName
+import com.groom.auth.domain.oauth2.OAuth2UserInformation
+import com.groom.auth.domain.oauth2.OAuth2UserInformationCommand
+import com.groom.auth.domain.oauth2.OAuth2UserInformationRepository
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
 class OAuth2UserInformationCoreRepository internal constructor(private val jpaRepository: OAuth2UserInformationJpaRepository,
-                                                               private val oAuth2VOMapper: OAuth2VOMapper): OAuth2UserInformationRepository {
+                                                               private val oAuth2VOMapper: OAuth2VOMapper):
+    OAuth2UserInformationRepository {
     override fun findBy(providerName: OAuth2ProviderName,
                         providerUserId: String): OAuth2UserInformation? {
         return jpaRepository.findByProviderNameAndProviderUserId(providerName, providerUserId)

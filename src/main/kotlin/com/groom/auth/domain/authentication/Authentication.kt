@@ -1,4 +1,4 @@
-package com.groom.domain.auth
+package com.groom.auth.domain.authentication
 
 import com.groom.domain.TimeStamp
 

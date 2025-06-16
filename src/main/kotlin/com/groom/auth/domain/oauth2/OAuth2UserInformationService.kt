@@ -1,4 +1,4 @@
-package com.groom.domain.auth
+package com.groom.auth.domain.oauth2
 
 import org.springframework.stereotype.Service
 

@@ -1,4 +1,4 @@
-package com.groom.domain.auth
+package com.groom.auth.domain.oauth2
 
 interface OAuth2UserInformationRepository{
     fun findBy(providerName: OAuth2ProviderName,

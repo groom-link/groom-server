@@ -1,8 +1,8 @@
-package com.groom.application.auth
+package com.groom.auth.application
 
-import com.groom.domain.auth.Authentication
-import com.groom.domain.auth.OAuth2ProviderName
-import com.groom.domain.auth.OAuth2UserInformationCommand
+import com.groom.auth.domain.authentication.Authentication
+import com.groom.auth.domain.oauth2.OAuth2ProviderName
+import com.groom.auth.domain.oauth2.OAuth2UserInformationCommand
 
 class AuthCriteria private constructor() {
     data class OAuth2Login(val accessToken: String,

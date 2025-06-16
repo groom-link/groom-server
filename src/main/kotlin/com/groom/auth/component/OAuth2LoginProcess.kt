@@ -1,9 +1,9 @@
 package com.groom.auth.component
 
-import com.groom.application.auth.AuthCriteria
-import com.groom.application.auth.AuthFacade
+import com.groom.auth.application.AuthCriteria
+import com.groom.auth.application.AuthFacade
 import com.groom.auth.CustomOAuth2User
-import com.groom.domain.auth.OAuth2ProviderName
+import com.groom.auth.domain.oauth2.OAuth2ProviderName
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService

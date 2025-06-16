@@ -1,4 +1,4 @@
-package com.groom.domain.auth
+package com.groom.auth.domain.oauth2
 
 class OAuth2UserInformationCommand private constructor() {
     data class Create(val authenticationId: Long, val providerName: OAuth2ProviderName,

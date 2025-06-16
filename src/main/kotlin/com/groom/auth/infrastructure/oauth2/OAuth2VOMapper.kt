@@ -1,8 +1,8 @@
-package com.groom.infrastructure.auth.oauth2
+package com.groom.auth.infrastructure.oauth2
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.groom.domain.auth.CreateOAuth2UserInformation
-import com.groom.domain.auth.OAuth2ProviderName
+import com.groom.auth.domain.oauth2.CreateOAuth2UserInformation
+import com.groom.auth.domain.oauth2.OAuth2ProviderName
 import org.springframework.stereotype.Component
 
 @Component

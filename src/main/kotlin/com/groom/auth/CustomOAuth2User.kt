@@ -1,6 +1,6 @@
 package com.groom.auth
 
-import com.groom.domain.auth.Authentication
+import com.groom.auth.domain.authentication.Authentication
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User
 

@@ -4,7 +4,7 @@ import com.groom.auth.CustomOAuth2User
 import com.groom.auth.component.JwtService
 import com.groom.auth.interfaces.JwtResponse
 import com.groom.common.ResponseSender
-import com.groom.domain.auth.AuthenticationService
+import com.groom.auth.domain.authentication.AuthenticationService
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.slf4j.LoggerFactory

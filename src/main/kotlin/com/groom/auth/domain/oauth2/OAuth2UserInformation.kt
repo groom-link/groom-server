@@ -1,4 +1,4 @@
-package com.groom.domain.auth
+package com.groom.auth.domain.oauth2
 
 
 data class OAuth2UserInformation(
