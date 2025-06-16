@@ -4,7 +4,6 @@ import com.groom.auth.CustomOAuth2User
 import com.groom.auth.component.JwtService
 import com.groom.auth.interfaces.JwtResponse
 import com.groom.common.ResponseSender
-import com.groom.auth.domain.authentication.AuthenticationService
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.slf4j.LoggerFactory
@@ -14,7 +13,6 @@ import java.time.Instant
 
 @Component
 internal class OAuth2Handler(
-    private val authenticationService: AuthenticationService,
     private val jwtService: JwtService,
     private val responseSender: ResponseSender
 ) {
