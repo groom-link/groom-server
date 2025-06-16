@@ -1,4 +1,4 @@
-package com.groom.auth.infrastructure
+package com.groom.auth.infrastructure.authentication
 
 import com.groom.auth.domain.authentication.Authentication
 import com.groom.auth.domain.authentication.AuthenticationRole
