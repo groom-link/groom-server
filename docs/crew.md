@@ -1,0 +1,76 @@
+# Crew 도메인 설계
+
+## ERD 작성
+
+```mermaid
+erDiagram
+    CREW ||--|{ CREW_MEMBERS: ""
+    CREW ||--o{ CREW_TAGS: ""
+    
+    CREW {
+        BIGINT crew_id PK "크루 ID"
+        VARCHAR name "크루 이름"
+        VARCHAR description "크루 내용"
+        VARCHAR category "크루 카테고리"
+        VARCHAR status "크루 상태"
+        INT members_count "크루 멤버 수"
+        VARCHAR invite_code "크루 초대 코드"
+        VARCHAR image_url "크루 이미지 URL"
+        TIMESTAMP created_at "생성일시"
+        TIMESTAMP updated_at "수정일시"
+    }
+    
+    CREW_TAGS {
+        BIGINT crew_tag_id PK "크루 태그 ID"
+        BIGINT crew_id FK "크루 ID"
+        VARCHAR tag_name "태그 이름"
+        TIMESTAMP created_at "생성일시"
+        TIMESTAMP updated_at "수정일시"
+    }
+    
+    CREW_MEMBERS {
+        BIGINT crew_member_id PK "크루 멤버 ID"
+        BIGINT crew_id FK "크루 ID"
+        BIGINT user_id FK "사용자 ID"
+        VARCHAR role "역할"
+        VARCHAR status "상태"
+        TIMESTAMP joined_at "참여일시"
+        TIMESTAMP created_at "생성일시"
+        TIMESTAMP updated_at "수정일시"
+    }
+```
+
+## 상태 및 타입 정의 (Status & Type)
+
+### category (CREW.category) - 크루 카테고리
+
+| Type      | Description |
+|-----------|-------------|
+| TECH      | 기술 관련 크루    |
+| DESIGN    | 디자인 관련 크루   |
+| COMMUNITY | 커뮤니티 관련 크루  |
+| OTHER     | 기타 크루       |
+
+> 유동성이 있는 값으로, 필요에 따라 추가될 수 있습니다.
+
+### status (CREW.status) - 크루 상태 
+
+| Type   | Description |
+|--------|-------------|
+| OPEN   | 모임 오픈       |
+| CLOSED | 모임 종료       |
+
+### role (CREW_MEMBERS.role) - 크루 멤버 역할
+
+| Type   | Description |
+|--------|-------------|
+| LEADER | 크루 리더       |
+| MEMBER | 크루 일반 멤버    |
+
+### status (CREW_MEMBERS.status) - 크루 멤버 상태
+
+| Type   | Description |
+|--------|-------------|
+| JOINED | 참여 중        |
+| LEFT   | 나가기         |
+| KICKED | 강제 퇴장       |
