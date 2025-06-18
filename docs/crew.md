@@ -15,7 +15,7 @@ erDiagram
         VARCHAR status "크루 상태"
         INT members_count "크루 멤버 수"
         VARCHAR invite_code "크루 초대 코드"
-        VARCHAR image_url "크루 이미지 URL"
+        VARCHAR thumbnail_image_url "크루 썸네일 이미지 URL"
         TIMESTAMP created_at "생성일시"
         TIMESTAMP updated_at "수정일시"
     }
