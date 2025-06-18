@@ -1,7 +1,6 @@
 package com.groom.auth
 
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.groom.auth.handler.SecurityHandler
+import com.groom.auth.interfaces.handler.SecurityHandler
 import org.apache.catalina.webresources.TomcatURLStreamHandlerFactory.disable
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -21,7 +20,6 @@ private const val OAUTH2_LOGIN_PAGE_PATH_BASE_PATH = "/api/v1/auth/login/oauth2/
 @EnableWebSecurity(debug = true)
 @EnableMethodSecurity(jsr250Enabled = true)
 class SecurityConfig(
-    private val objectMapper: ObjectMapper,
     private val handler: SecurityHandler,
 ) {
     @Bean

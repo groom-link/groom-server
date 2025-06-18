@@ -6,11 +6,11 @@ import org.springframework.security.oauth2.jwt.Jwt
 import org.springframework.security.oauth2.jwt.JwtClaimsSet
 import org.springframework.security.oauth2.jwt.JwtEncoder
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Component
 import java.time.Duration
 import java.time.Instant
 
-@Service
+@Component
 class JwtGenerator(
     private val jwtEncoder: JwtEncoder,
     @Value("\${spring.security.jwt.access.expires-in-seconds:3600}")

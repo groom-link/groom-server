@@ -1,4 +1,4 @@
-package com.groom.auth.handler
+package com.groom.auth.interfaces.handler
 
 import com.groom.common.ErrorResponse
 import com.groom.common.ResponseSender

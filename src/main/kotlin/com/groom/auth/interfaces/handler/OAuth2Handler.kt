@@ -1,11 +1,11 @@
-package com.groom.auth.handler
+package com.groom.auth.interfaces.handler
 
-import com.groom.auth.CustomOAuth2User
 import com.groom.auth.application.AuthCriteria
 import com.groom.auth.application.AuthFacade
+import com.groom.auth.interfaces.api.CustomOAuth2User
 import com.groom.auth.component.JwtGenerator
 import com.groom.auth.domain.oauth2.OAuth2ProviderName
-import com.groom.auth.interfaces.AuthResponse
+import com.groom.auth.interfaces.api.AuthResponse
 import com.groom.common.ResponseSender
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse

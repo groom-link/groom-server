@@ -1,10 +1,10 @@
-package com.groom.auth.interfaces
+package com.groom.auth.interfaces.api
 
 import org.springframework.security.oauth2.core.OAuth2AccessToken
 import java.time.Instant
 
 
-class AuthRequest private constructor() {
+internal class AuthRequest private constructor() {
     data class OAuth2LoginWithAccessToken(
         val accessToken: String,
         val issuedAt: Instant,
