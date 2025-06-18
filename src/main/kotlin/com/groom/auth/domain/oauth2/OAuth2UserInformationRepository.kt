@@ -1,6 +1,6 @@
 package com.groom.auth.domain.oauth2
 
-internal interface OAuth2UserInformationRepository{
+interface OAuth2UserInformationRepository{
     fun findBy(providerName: OAuth2ProviderName,
                providerUserId: String): OAuth2UserInformation?
 

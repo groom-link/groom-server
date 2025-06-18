@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-class OAuth2UserInformationCoreRepository internal constructor(private val jpaRepository: OAuth2UserInformationJpaRepository,
+internal class OAuth2UserInformationCoreRepository (private val jpaRepository: OAuth2UserInformationJpaRepository,
                                                                private val oAuth2UserInformationFactory: OAuth2UserInformationFactory) :
     OAuth2UserInformationRepository {
     override fun findBy(providerName: OAuth2ProviderName,

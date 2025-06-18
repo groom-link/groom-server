@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-class UserCoreRepository internal constructor(private val jpaRepository: UserJpaRepository) :
+internal class UserCoreRepository (private val jpaRepository: UserJpaRepository) :
     UserRepository {
     override fun createUser(command: UserCommand.Create): User {
         val entity = UserEntity.fromCreate(command)

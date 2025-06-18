@@ -19,7 +19,7 @@ private const val OAUTH2_LOGIN_PAGE_PATH_BASE_PATH = "/api/v1/auth/login/oauth2/
 @Configuration
 @EnableWebSecurity(debug = true)
 @EnableMethodSecurity(jsr250Enabled = true)
-class SecurityConfig(
+internal class SecurityConfig (
     private val handler: SecurityHandler,
 ) {
     @Bean

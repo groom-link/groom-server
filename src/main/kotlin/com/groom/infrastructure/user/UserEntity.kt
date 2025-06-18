@@ -7,7 +7,7 @@ import jakarta.persistence.Entity
 import jakarta.persistence.Id
 
 @Entity(name = "users")
-class UserEntity private constructor(
+internal class UserEntity private constructor(
     @Id
     val authenticationId: Long,
 //    val email: String, TODO: 사업자 등록후 가능

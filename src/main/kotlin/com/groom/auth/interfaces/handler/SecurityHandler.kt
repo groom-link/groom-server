@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Component
 
 @Component
-class SecurityHandler internal constructor(
+internal class SecurityHandler (
     oAuth2Handler: OAuth2Handler,
     private val responseSender: ResponseSender,
 ) {

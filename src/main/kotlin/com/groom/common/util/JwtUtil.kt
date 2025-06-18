@@ -6,7 +6,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.security.KeyPair
 
-object JwtUtil {
+internal object JwtUtil {
     private const val JWT_KEY_FILE_NAME = "key"
     const val JWT_PUBLIC_KEY_FILE_NAME = "$JWT_KEY_FILE_NAME.pub"
     const val JWT_PRIVATE_KEY_FILE_NAME = JWT_KEY_FILE_NAME

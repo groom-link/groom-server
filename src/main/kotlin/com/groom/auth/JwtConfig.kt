@@ -25,7 +25,7 @@ import java.security.spec.X509EncodedKeySpec
 import java.util.UUID
 
 @Configuration
-class JwtConfig {
+internal class JwtConfig {
 
     @Bean
     fun jwtDecoder(rsaKey: RSAKey): JwtDecoder {

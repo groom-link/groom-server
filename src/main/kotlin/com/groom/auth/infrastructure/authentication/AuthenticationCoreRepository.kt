@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
 
 @Repository
-class AuthenticationCoreRepository internal constructor(private val jpaRepository: AuthenticationJpaRepository) :
+internal class AuthenticationCoreRepository (private val jpaRepository: AuthenticationJpaRepository) :
     AuthenticationRepository {
     @Transactional
     override fun create(initialRole: AuthenticationRole): Authentication {
