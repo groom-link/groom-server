@@ -26,6 +26,7 @@ import java.util.UUID
 
 @Configuration
 class JwtConfig {
+
     @Bean
     fun jwtDecoder(rsaKey: RSAKey): JwtDecoder {
         return NimbusJwtDecoder.withPublicKey(rsaKey.toRSAPublicKey())

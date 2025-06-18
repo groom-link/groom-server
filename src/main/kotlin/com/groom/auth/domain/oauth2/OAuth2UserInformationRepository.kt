@@ -4,5 +4,5 @@ interface OAuth2UserInformationRepository{
     fun findBy(providerName: OAuth2ProviderName,
                providerUserId: String): OAuth2UserInformation?
 
-    fun create(data: OAuth2UserInformationCommand.Create): OAuth2UserInformation
+    fun create(authenticationId: Long, data: OAuth2UserInformationCommand.Create): OAuth2UserInformation
 }

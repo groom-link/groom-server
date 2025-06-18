@@ -11,14 +11,14 @@ import java.time.Duration
 import java.time.Instant
 
 @Service
-class JwtService(
+class JwtGenerator(
     private val jwtEncoder: JwtEncoder,
     @Value("\${spring.security.jwt.access.expires-in-seconds:3600}")
     private val accessTokenExpiresInSeconds: Long,
 ) {
 
-    fun generateToken(claims: Map<String, String> = mapOf(), issuedAt: Instant,
-                      expiresInSeconds: Long = accessTokenExpiresInSeconds): OAuth2AccessToken {
+    fun generate(claims: Map<String, String> = mapOf(), issuedAt: Instant,
+                 expiresInSeconds: Long = accessTokenExpiresInSeconds): OAuth2AccessToken {
         val expiredAt = issuedAt.plus(Duration.ofSeconds(expiresInSeconds))
         val claimSet: JwtClaimsSet = JwtClaimsSet.builder()
             .claims { claim -> claim.putAll(claims) }

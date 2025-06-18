@@ -20,7 +20,7 @@ class OAuth2LoginProcess(
     override fun loadUser(userRequest: OAuth2UserRequest): OAuth2User {
         val oAuth2User = oAuth2UserService.loadUser(userRequest)
         val attributes = oAuth2User.attributes
-        val providerName = OAuth2ProviderName.fromString(userRequest.clientRegistration.clientName)
+        val providerName = OAuth2ProviderName.fromName(userRequest.clientRegistration.clientName)
         val nameAttributeName = userRequest.clientRegistration
             .providerDetails
             .userInfoEndpoint

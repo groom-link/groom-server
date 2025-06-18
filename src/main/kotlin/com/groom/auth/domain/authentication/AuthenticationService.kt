@@ -4,8 +4,8 @@ import org.springframework.stereotype.Component
 
 @Component
 class AuthenticationService(private val authenticationRepository: AuthenticationRepository) {
-    fun findBy(id: Long): Authentication = authenticationRepository.findBy(id)
-    fun createAuthentication(initializeRole: AuthenticationRole = AuthenticationRole.USER): Authentication {
+    fun read(id: Long): Authentication = authenticationRepository.findBy(id)
+    fun create(initializeRole: AuthenticationRole = AuthenticationRole.USER): Authentication {
         return authenticationRepository.create(initializeRole)
     }
 }

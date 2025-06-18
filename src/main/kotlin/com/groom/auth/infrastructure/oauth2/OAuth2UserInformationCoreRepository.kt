@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 class OAuth2UserInformationCoreRepository internal constructor(private val jpaRepository: OAuth2UserInformationJpaRepository,
-                                                               private val oAuth2VOMapper: OAuth2VOMapper):
+                                                               private val oAuth2UserInformationFactory: OAuth2UserInformationFactory) :
     OAuth2UserInformationRepository {
     override fun findBy(providerName: OAuth2ProviderName,
                         providerUserId: String): OAuth2UserInformation? {
@@ -17,11 +17,10 @@ class OAuth2UserInformationCoreRepository internal constructor(private val jpaRe
             ?.toDomain()
     }
 
-    override fun create(data: OAuth2UserInformationCommand.Create): OAuth2UserInformation {
-        val information = oAuth2VOMapper.convert(data.providerName, data.attributes)
-        val entity = OAuth2UserInformationEntity.create(data.authenticationId, information)
-        return jpaRepository.save(entity)
-            .toDomain()
+    override fun create(authenticationId: Long,
+                        data: OAuth2UserInformationCommand.Create): OAuth2UserInformation {
+        val entity = oAuth2UserInformationFactory.create(authenticationId, data)
+        return jpaRepository.save(entity).toDomain()
     }
 }
 

@@ -4,8 +4,8 @@ enum class OAuth2ProviderName {
     KAKAO, APPLE;
 
     companion object {
-        fun fromString(s: String): OAuth2ProviderName {
-            return OAuth2ProviderName.valueOf(s.uppercase())
+        fun fromName(name: String): OAuth2ProviderName {
+            return OAuth2ProviderName.valueOf(name.uppercase())
         }
     }
 }

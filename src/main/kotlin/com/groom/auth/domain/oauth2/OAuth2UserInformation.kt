@@ -3,6 +3,7 @@ package com.groom.auth.domain.oauth2
 
 data class OAuth2UserInformation(
     val id: Long,
+    val authenticationId: Long,
     val providerName: OAuth2ProviderName,
     val providerUserId: String,
 //    val email: String, TODO: 사업자 등록후 가능
