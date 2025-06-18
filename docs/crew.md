@@ -55,10 +55,12 @@ erDiagram
 
 ### status (CREW.status) - 크루 상태 
 
-| Type   | Description |
-|--------|-------------|
-| OPEN   | 모임 오픈       |
-| CLOSED | 모임 종료       |
+| Type     | Description |
+|----------|-------------|
+| READY    | 모임 오픈 대기    |
+| OPEN     | 모임 오픈       |
+| PROGRESS | 모임 진행 중     |
+| CLOSED   | 모임 종료       |
 
 ### role (CREW_MEMBERS.role) - 크루 멤버 역할
 
