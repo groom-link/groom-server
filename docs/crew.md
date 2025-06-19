@@ -13,7 +13,7 @@ erDiagram
         VARCHAR description "크루 내용"
         VARCHAR category "크루 카테고리"
         VARCHAR status "크루 상태"
-        INT members_count "크루 멤버 수"
+        INT max_members_count "크루 최대 멤버 수"
         VARCHAR invite_code "크루 초대 코드"
         VARCHAR thumbnail_image_url "크루 썸네일 이미지 URL"
         TIMESTAMP created_at "생성일시"
@@ -35,6 +35,14 @@ erDiagram
         VARCHAR role "역할"
         VARCHAR status "상태"
         TIMESTAMP joined_at "참여일시"
+        TIMESTAMP created_at "생성일시"
+        TIMESTAMP updated_at "수정일시"
+    }
+
+    CREW_JOIN_MEMBERS {
+        BIGINT id PK "크루 멤버 ID"
+        BIGINT crew_id FK "크루 ID"
+        BIGINT user_id FK "사용자 ID"
         TIMESTAMP created_at "생성일시"
         TIMESTAMP updated_at "수정일시"
     }
