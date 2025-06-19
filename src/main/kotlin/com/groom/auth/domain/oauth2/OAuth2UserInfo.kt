@@ -1,7 +1,7 @@
 package com.groom.auth.domain.oauth2
 
 
-data class OAuth2UserInformation(
+data class OAuth2UserInfo(
     val id: Long,
     val authenticationId: Long,
     val providerName: OAuth2ProviderName,

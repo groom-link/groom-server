@@ -1,4 +1,4 @@
-package com.groom.interfaces
+package com.groom
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

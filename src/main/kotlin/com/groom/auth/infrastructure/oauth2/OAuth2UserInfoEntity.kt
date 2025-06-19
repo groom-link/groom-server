@@ -1,7 +1,7 @@
 package com.groom.auth.infrastructure.oauth2
 
 import com.groom.auth.domain.oauth2.OAuth2ProviderName
-import com.groom.auth.domain.oauth2.OAuth2UserInformation
+import com.groom.auth.domain.oauth2.OAuth2UserInfo
 import com.groom.infrastructure.common.EntityTimeStamp
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
@@ -11,7 +11,7 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 
 @Entity(name = "oauth2_informations")
-internal data class OAuth2UserInformationEntity(
+internal data class OAuth2UserInfoEntity(
     val authenticationId: Long,
     val providerUserId: String,
 //    val email: String, TODO: 사업자 등록후 가능
@@ -26,8 +26,8 @@ internal data class OAuth2UserInformationEntity(
     val timestamp: EntityTimeStamp = EntityTimeStamp()
 
 
-    fun toDomain(): OAuth2UserInformation {
-        return OAuth2UserInformation(id = id,
+    fun toDomain(): OAuth2UserInfo {
+        return OAuth2UserInfo(id = id,
             authenticationId = authenticationId,
             providerName = providerName,
             providerUserId = providerUserId,
@@ -39,8 +39,8 @@ internal data class OAuth2UserInformationEntity(
 
     companion object {
         fun fromKakao(authenticationId: Long,
-                      userInfo: KakaoUserInfo): OAuth2UserInformationEntity {
-            return OAuth2UserInformationEntity(
+                      userInfo: KakaoUserInfo): OAuth2UserInfoEntity {
+            return OAuth2UserInfoEntity(
                 authenticationId = authenticationId,
                 providerUserId = userInfo.id.toString(),
 //                email = information.email,
