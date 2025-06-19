@@ -1,5 +1,6 @@
 package com.groom
 
+import com.groom.common.util.JwtUtil
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
@@ -7,5 +8,6 @@ import org.springframework.boot.runApplication
 class ApiApplication
 
 fun main(args: Array<String>) {
+    JwtUtil.saveKeyPairFileIfNotExists()
     runApplication<ApiApplication>(*args)
 }
