@@ -17,9 +17,7 @@ class AuthFacade(private val userService: UserService,
         return oAuth2UserInformationService.read(
             providerName = criteria.providerName,
             providerUserId = criteria.providerUserId)
-            ?.let {
-                authenticationService.read(it.authenticationId)
-            }
+            ?.let { authenticationService.read(it.authenticationId) }
             ?: registerNewOAuth2User(criteria.toCreateOAuth2UserInfoCommand())
     }
 
