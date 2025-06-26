@@ -1,8 +1,7 @@
 package com.groom.auth.infrastructure.authentication
 
 import com.groom.auth.domain.authentication.OAuth2ProviderName
-import com.groom.auth.domain.authentication.OAuth2UserInfo
-import com.groom.infrastructure.common.EntityTimeStamp
+import com.groom.domain.Timestamp
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
@@ -23,31 +22,5 @@ internal data class OAuth2UserInfoEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0
-    val timestamp: EntityTimeStamp = EntityTimeStamp()
-
-    fun toDomain(): OAuth2UserInfo =
-        OAuth2UserInfo(
-            id = id,
-            authenticationId = authenticationId,
-            providerName = providerName,
-            providerUserId = providerUserId,
-//            email = email, TODO: 사업자 등록후 가능
-            nickname = nickname,
-            profileImageUrl = profileImageUrl,
-        )
-
-    companion object {
-        fun fromKakao(
-            authenticationId: Long,
-            userInfo: KakaoUserInfo,
-        ): OAuth2UserInfoEntity =
-            OAuth2UserInfoEntity(
-                authenticationId = authenticationId,
-                providerUserId = userInfo.id.toString(),
-//                email = information.email,
-                providerName = OAuth2ProviderName.KAKAO,
-                nickname = userInfo.kakaoAccount.profile.nickname,
-                profileImageUrl = userInfo.kakaoAccount.profile.profileImageUrl,
-            )
-    }
+    val timestamp = Timestamp()
 }
