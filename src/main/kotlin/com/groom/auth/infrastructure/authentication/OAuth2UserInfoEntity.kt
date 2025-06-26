@@ -1,7 +1,7 @@
 package com.groom.auth.infrastructure.authentication
 
-import com.groom.auth.domain.oauth2.OAuth2ProviderName
-import com.groom.auth.domain.oauth2.OAuth2UserInfo
+import com.groom.auth.domain.authentication.OAuth2ProviderName
+import com.groom.auth.domain.authentication.OAuth2UserInfo
 import com.groom.infrastructure.common.EntityTimeStamp
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType

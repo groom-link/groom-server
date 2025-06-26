@@ -2,10 +2,10 @@ package com.groom.auth.interfaces.handler
 
 import com.groom.auth.application.AuthCriteria
 import com.groom.auth.application.AuthFacade
-import com.groom.auth.interfaces.api.CustomOAuth2User
 import com.groom.auth.component.JwtGenerator
-import com.groom.auth.domain.oauth2.OAuth2ProviderName
+import com.groom.auth.domain.authentication.OAuth2ProviderName
 import com.groom.auth.interfaces.api.AuthResponse
+import com.groom.auth.interfaces.api.CustomOAuth2User
 import com.groom.common.ResponseSender
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
@@ -40,15 +40,20 @@ internal class OAuth2Handler(
         val oAuth2User = oAuth2UserService.loadUser(userRequest)
         val attributes = oAuth2User.attributes
         val providerName = OAuth2ProviderName.fromName(userRequest.clientRegistration.clientName)
-        val nameAttributeName = userRequest.clientRegistration
-            .providerDetails
-            .userInfoEndpoint
-            .userNameAttributeName
+        val nameAttributeName =
+            userRequest.clientRegistration
+                .providerDetails
+                .userInfoEndpoint
+                .userNameAttributeName
         val authentication =
-            authFacade.loginOrSignUpForOAuth2(AuthCriteria.OAuth2Login(accessToken = userRequest.accessToken.tokenValue,
-                providerName = providerName,
-                providerUserId = oAuth2User.name,
-                attributes = attributes))
+            authFacade.loginOrSignUpForOAuth2(
+                AuthCriteria.OAuth2Login(
+                    accessToken = userRequest.accessToken.tokenValue,
+                    providerName = providerName,
+                    providerUserId = oAuth2User.name,
+                    attributes = attributes,
+                ),
+            )
         return CustomOAuth2User(authentication, attributes, nameAttributeName)
     }
 }

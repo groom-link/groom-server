@@ -1,9 +1,9 @@
 package com.groom.auth.infrastructure.authentication
 
-import com.groom.auth.domain.oauth2.OAuth2ProviderName
-import com.groom.auth.domain.oauth2.OAuth2UserInfo
-import com.groom.auth.domain.oauth2.OAuth2UserInfoCommand
-import com.groom.auth.domain.oauth2.OAuth2UserInfoRepository
+import com.groom.auth.domain.authentication.OAuth2ProviderName
+import com.groom.auth.domain.authentication.OAuth2UserInfo
+import com.groom.auth.domain.authentication.OAuth2UserInfoCommand
+import com.groom.auth.domain.authentication.OAuth2UserInfoRepository
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

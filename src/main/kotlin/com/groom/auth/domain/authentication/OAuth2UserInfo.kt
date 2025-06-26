@@ -1,5 +1,4 @@
-package com.groom.auth.domain.oauth2
-
+package com.groom.auth.domain.authentication
 
 data class OAuth2UserInfo(
     val id: Long,
