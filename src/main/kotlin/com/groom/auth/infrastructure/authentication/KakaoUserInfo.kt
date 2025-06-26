@@ -1,9 +1,11 @@
-package com.groom.auth.infrastructure.oauth2
+package com.groom.auth.infrastructure.authentication
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-
-internal class KakaoUserInfo(val id: Long, @JsonProperty("kakao_account") val kakaoAccount: KakaoAccount) {
+internal class KakaoUserInfo(
+    val id: Long,
+    @JsonProperty("kakao_account") val kakaoAccount: KakaoAccount,
+) {
     class KakaoAccount(
         val profile: Profile,
 //        TODO: 사업자 등록 후 가능
@@ -16,7 +18,7 @@ internal class KakaoUserInfo(val id: Long, @JsonProperty("kakao_account") val ka
         data class Profile(
             val nickname: String,
             @field:JsonProperty("thumbnail_image_url") @param:JsonProperty("thumbnail_image_url") val thumbnail_image_url: String,
-            @field:JsonProperty("profile_image_url") @param:JsonProperty("profile_image_url") val profileImageUrl: String
+            @field:JsonProperty("profile_image_url") @param:JsonProperty("profile_image_url") val profileImageUrl: String,
         )
     }
 }

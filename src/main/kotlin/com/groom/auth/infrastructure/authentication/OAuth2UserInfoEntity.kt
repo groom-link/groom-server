@@ -1,4 +1,4 @@
-package com.groom.auth.infrastructure.oauth2
+package com.groom.auth.infrastructure.authentication
 
 import com.groom.auth.domain.oauth2.OAuth2ProviderName
 import com.groom.auth.domain.oauth2.OAuth2UserInfo
@@ -25,22 +25,23 @@ internal data class OAuth2UserInfoEntity(
     val id: Long = 0
     val timestamp: EntityTimeStamp = EntityTimeStamp()
 
-
-    fun toDomain(): OAuth2UserInfo {
-        return OAuth2UserInfo(id = id,
+    fun toDomain(): OAuth2UserInfo =
+        OAuth2UserInfo(
+            id = id,
             authenticationId = authenticationId,
             providerName = providerName,
             providerUserId = providerUserId,
 //            email = email, TODO: 사업자 등록후 가능
             nickname = nickname,
-            profileImageUrl = profileImageUrl)
-    }
-
+            profileImageUrl = profileImageUrl,
+        )
 
     companion object {
-        fun fromKakao(authenticationId: Long,
-                      userInfo: KakaoUserInfo): OAuth2UserInfoEntity {
-            return OAuth2UserInfoEntity(
+        fun fromKakao(
+            authenticationId: Long,
+            userInfo: KakaoUserInfo,
+        ): OAuth2UserInfoEntity =
+            OAuth2UserInfoEntity(
                 authenticationId = authenticationId,
                 providerUserId = userInfo.id.toString(),
 //                email = information.email,
@@ -48,7 +49,5 @@ internal data class OAuth2UserInfoEntity(
                 nickname = userInfo.kakaoAccount.profile.nickname,
                 profileImageUrl = userInfo.kakaoAccount.profile.profileImageUrl,
             )
-        }
     }
 }
-
