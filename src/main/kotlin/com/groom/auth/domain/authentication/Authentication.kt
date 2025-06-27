@@ -4,7 +4,7 @@ import com.groom.domain.Timestamp
 
 data class Authentication(
     val id: Long,
-    val roles: Set<AuthenticationRole>,
+    val roles: Set<Role>,
     val timestamp: Timestamp,
 ) {
     val claims: Map<String, String>

@@ -7,7 +7,7 @@ import jakarta.persistence.Entity
 import org.hibernate.annotations.NaturalId
 
 @Entity(name = "users")
-internal class UserEntity private constructor(
+class UserEntity(
     @NaturalId
     val authenticationId: Long,
 //    val email: String, TODO: 사업자 등록후 가능

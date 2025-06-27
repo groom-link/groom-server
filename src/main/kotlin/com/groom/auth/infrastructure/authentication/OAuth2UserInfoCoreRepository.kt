@@ -18,21 +18,20 @@ internal class OAuth2UserInfoCoreRepository(
     ): OAuth2UserInfo? =
         jpaRepository
             .findByProviderNameAndProviderUserId(providerName, providerUserId)
-            ?.toDomain()
 
     override fun create(
         authenticationId: Long,
         data: OAuth2UserInfoCommand.Create,
     ): OAuth2UserInfo {
         val entity = oAuth2UserInfoFactory.create(authenticationId, data)
-        return jpaRepository.save(entity).toDomain()
+        return jpaRepository.save(entity)
     }
 }
 
 @Repository
-internal interface OAuth2UserInformationJpaRepository : JpaRepository<OAuth2UserInfoEntity, Long> {
+internal interface OAuth2UserInformationJpaRepository : JpaRepository<OAuth2AuthenticationEntity, Long> {
     fun findByProviderNameAndProviderUserId(
         providerName: OAuth2ProviderName,
         providerUserId: String,
-    ): OAuth2UserInfoEntity?
+    ): OAuth2AuthenticationEntity?
 }

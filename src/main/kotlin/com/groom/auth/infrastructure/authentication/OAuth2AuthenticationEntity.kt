@@ -7,10 +7,12 @@ import jakarta.persistence.EmbeddedId
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
+import jakarta.persistence.FetchType
+import jakarta.persistence.JoinColumn
+import jakarta.persistence.ManyToOne
 
-@Entity(name = "oauth2_informations")
-data class OAuth2UserInfoEntity(
-    val authenticationId: Long,
+@Entity(name = "oauth2_authentications")
+data class OAuth2AuthenticationEntity(
     val providerUserId: String,
 //    val email: String, TODO: 사업자 등록후 가능
     val nickname: String,
@@ -20,5 +22,9 @@ data class OAuth2UserInfoEntity(
 ) {
     @EmbeddedId
     val pk = CommonId()
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "authentication_id")
+    val authentication: AuthenticationEntity = AuthenticationEntity()
     val timestamp = Timestamp()
 }

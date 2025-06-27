@@ -11,13 +11,18 @@ internal class OAuth2UserInfoFactory(
     fun create(
         authenticationId: Long,
         data: OAuth2UserInfoCommand.Create,
-    ): OAuth2UserInfoEntity =
+    ): OAuth2AuthenticationEntity =
         with(data) {
             when (providerName) {
                 com.groom.auth.domain.authentication.OAuth2ProviderName.KAKAO -> {
                     val userInfo: KakaoUserInfo =
                         objectMapper.convertValue(attributes, KakaoUserInfo::class.java)
-                    return OAuth2UserInfoEntity.fromKakao(authenticationId, userInfo)
+                    return OAuth2AuthenticationEntity(
+                        providerUserId = userInfo.id.toString(),
+                        nickname = userInfo.kakaoAccount.profile.nickname,
+                        providerName = providerName,
+                        profileImageUrl = userInfo.kakaoAccount.profile.profileImageUrl,
+                    )
                 }
                 else -> throw RuntimeException("지원하지 않는 간편로그인입니다.")
             }

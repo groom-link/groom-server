@@ -1,6 +1,7 @@
 package com.groom.auth.domain.authentication
 
 interface AuthenticationRepository {
-    fun create(initialRole: AuthenticationRole = AuthenticationRole.USER): Authentication
+    fun create(initialRole: Role = Role.USER): Authentication
+
     fun findBy(id: Long): Authentication
 }
