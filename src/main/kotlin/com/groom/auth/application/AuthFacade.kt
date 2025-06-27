@@ -1,6 +1,5 @@
 package com.groom.auth.application
 
-import com.groom.auth.domain.authentication.Authentication
 import com.groom.auth.domain.authentication.AuthenticationService
 import com.groom.auth.domain.authentication.OAuth2UserInfoCommand
 import com.groom.auth.domain.authentication.OAuth2UserInfoService

@@ -5,5 +5,5 @@ enum class Role {
     ADMIN,
     ;
 
-    override fun toString(): String = "ROLE_$name"
+    val authorityString get() = "ROLE_$name"
 }

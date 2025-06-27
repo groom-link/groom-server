@@ -14,7 +14,7 @@ internal class AuthenticationCoreRepository(
 ) : AuthenticationRepository {
     @Transactional
     override fun create(initialRole: Role): Authentication {
-        val entity = AuthenticationEntity()
+        val entity = Authentication()
         val authentication = jpaRepository.save(entity)
         authentication.addRole(initialRole)
         return authentication.toDomain()
@@ -27,7 +27,7 @@ internal class AuthenticationCoreRepository(
 }
 
 @Repository
-internal interface AuthenticationJpaRepository : JpaRepository<AuthenticationEntity, Long> {
+internal interface AuthenticationJpaRepository : JpaRepository<Authentication, Long> {
     @Query("select u from authentications u join fetch u.roles where u.id = :id")
-    fun findByIdWithRole(id: Long): AuthenticationEntity
+    fun findByIdWithRole(id: Long): Authentication
 }

@@ -1,11 +1,21 @@
 package com.groom.domain.user
 
+import com.groom.domain.CommonId
 import com.groom.domain.Timestamp
+import jakarta.persistence.EmbeddedId
+import jakarta.persistence.Entity
+import org.hibernate.annotations.NaturalId
 
-data class User(
-    val id: Long,
+@Entity(name = "users")
+class User(
+    @NaturalId
+    val authenticationId: Long,
 //    val email: String, TODO: 사업자 등록후 가능
+    @NaturalId
     val nickname: String,
     val profileImageUrl: String,
-    val timeStamp: Timestamp,
-)
+) {
+    @EmbeddedId
+    val pk = CommonId()
+    val timeStamp = Timestamp()
+}

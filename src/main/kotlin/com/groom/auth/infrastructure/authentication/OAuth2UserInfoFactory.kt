@@ -1,6 +1,7 @@
 package com.groom.auth.infrastructure.authentication
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.groom.auth.domain.authentication.OAuth2Authentication
 import com.groom.auth.domain.authentication.OAuth2UserInfoCommand
 import org.springframework.stereotype.Component
 
@@ -11,13 +12,13 @@ internal class OAuth2UserInfoFactory(
     fun create(
         authenticationId: Long,
         data: OAuth2UserInfoCommand.Create,
-    ): OAuth2AuthenticationEntity =
+    ): OAuth2Authentication =
         with(data) {
             when (providerName) {
                 com.groom.auth.domain.authentication.OAuth2ProviderName.KAKAO -> {
                     val userInfo: KakaoUserInfo =
                         objectMapper.convertValue(attributes, KakaoUserInfo::class.java)
-                    return OAuth2AuthenticationEntity(
+                    return OAuth2Authentication(
                         providerUserId = userInfo.id.toString(),
                         nickname = userInfo.kakaoAccount.profile.nickname,
                         providerName = providerName,

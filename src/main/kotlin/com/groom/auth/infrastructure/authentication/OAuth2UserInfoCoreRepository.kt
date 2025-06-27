@@ -1,7 +1,7 @@
 package com.groom.auth.infrastructure.authentication
 
+import com.groom.auth.domain.authentication.OAuth2Authentication
 import com.groom.auth.domain.authentication.OAuth2ProviderName
-import com.groom.auth.domain.authentication.OAuth2UserInfo
 import com.groom.auth.domain.authentication.OAuth2UserInfoCommand
 import com.groom.auth.domain.authentication.OAuth2UserInfoRepository
 import org.springframework.data.jpa.repository.JpaRepository
@@ -29,9 +29,9 @@ internal class OAuth2UserInfoCoreRepository(
 }
 
 @Repository
-internal interface OAuth2UserInformationJpaRepository : JpaRepository<OAuth2AuthenticationEntity, Long> {
+internal interface OAuth2UserInformationJpaRepository : JpaRepository<OAuth2Authentication, Long> {
     fun findByProviderNameAndProviderUserId(
         providerName: OAuth2ProviderName,
         providerUserId: String,
-    ): OAuth2AuthenticationEntity?
+    ): OAuth2Authentication?
 }
