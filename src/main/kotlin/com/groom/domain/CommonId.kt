@@ -6,6 +6,6 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 
 @Embeddable
-class CommonId(
+data class CommonId(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long = 0,
 )
