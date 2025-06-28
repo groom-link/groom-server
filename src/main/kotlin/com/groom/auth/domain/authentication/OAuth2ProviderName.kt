@@ -2,7 +2,6 @@ package com.groom.auth.domain.authentication
 
 enum class OAuth2ProviderName {
     KAKAO,
-    APPLE,
     ;
 
     companion object {

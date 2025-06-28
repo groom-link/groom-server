@@ -11,7 +11,10 @@ import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 
 @Entity(name = "oauth2_authentications")
-data class OAuth2Authentication(
+data class OAuth2Authentication private constructor(
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "authentication_id")
+    val authentication: Authentication,
     val providerUserId: String,
 //    val email: String, TODO: 사업자 등록후 가능
     val nickname: String,
@@ -21,9 +24,19 @@ data class OAuth2Authentication(
 ) {
     @EmbeddedId
     val pk = CommonId()
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "authentication_id")
-    val authentication: Authentication = Authentication()
     val timestamp = Timestamp()
+
+    companion object {
+        fun of(
+            create: CreateOAuth2Authentication,
+            authentication: Authentication = Authentication(),
+        ): OAuth2Authentication =
+            OAuth2Authentication(
+                authentication = authentication,
+                providerUserId = create.providerUserId,
+                nickname = create.nickname,
+                providerName = create.providerName,
+                profileImageUrl = create.profileImageUrl,
+            )
+    }
 }

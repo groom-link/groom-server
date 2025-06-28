@@ -1,8 +1,6 @@
 package com.groom.auth.infrastructure.authentication
 
-import com.groom.auth.domain.authentication.Authentication
-import com.groom.auth.domain.authentication.AuthenticationRepository
-import com.groom.auth.domain.authentication.Role
+import com.groom.auth.domain.authentication.*
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
@@ -11,23 +9,21 @@ import org.springframework.transaction.annotation.Transactional
 @Repository
 internal class AuthenticationCoreRepository(
     private val jpaRepository: AuthenticationJpaRepository,
-) : AuthenticationRepository {
-    @Transactional
-    override fun create(initialRole: Role): Authentication {
-        val entity = Authentication()
-        val authentication = jpaRepository.save(entity)
-        authentication.addRole(initialRole)
-        return authentication.toDomain()
+): AuthenticationRepository {
+    override fun findBy(providerName: OAuth2ProviderName, providerUserId: String): Authentication? {
+        return jpaRepository.findByOAuthInfoWithRole(providerName, providerUserId)
     }
 
-    override fun findBy(id: Long): Authentication =
-        jpaRepository
-            .findByIdWithRole(id)
-            .toDomain()
+    @Transactional
+    override fun createWithOAuth2(create: CreateOAuth2Authentication): Authentication {
+        val entity = Authentication()
+        entity.registerOAuth2(create)
+        return jpaRepository.save(entity)
+    }
 }
 
 @Repository
 internal interface AuthenticationJpaRepository : JpaRepository<Authentication, Long> {
-    @Query("select u from authentications u join fetch u.roles where u.id = :id")
-    fun findByIdWithRole(id: Long): Authentication
+    @Query("select u from authentications u right join oauth2_authentications o join fetch u.authenticationRoles where o.providerName = :providerName and o.providerUserId = :providerUserId")
+    fun findByOAuthInfoWithRole(providerName: OAuth2ProviderName, providerUserId: String): Authentication?
 }

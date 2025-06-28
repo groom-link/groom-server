@@ -17,9 +17,16 @@ class Authentication(
     @OneToMany(mappedBy = "authentication", cascade = [(CascadeType.ALL)], orphanRemoval = true)
     private val authenticationRoles: MutableSet<AuthenticationRole> =
         mutableSetOf(AuthenticationRole(this, initialRole))
+
+    @OneToMany(mappedBy = "authentication", cascade = [(CascadeType.ALL)], orphanRemoval = true)
+    val oAuth2Authentications = mutableSetOf<OAuth2Authentication>()
     val timeStamp = Timestamp()
 
     val roles get() = authenticationRoles.map { it.role }
+
+    fun registerOAuth2(create: CreateOAuth2Authentication) {
+        oAuth2Authentications.add(OAuth2Authentication.of(create, this))
+    }
 
     val claims: Map<String, String>
         get() =

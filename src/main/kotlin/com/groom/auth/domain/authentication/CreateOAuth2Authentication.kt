@@ -1,6 +1,6 @@
 package com.groom.auth.domain.authentication
 
-data class CreateOAuth2UserInformation(
+data class CreateOAuth2Authentication(
     val providerName: OAuth2ProviderName,
     val providerUserId: String,
 //    val email: String, TODO: 사업자 등록 후 가능

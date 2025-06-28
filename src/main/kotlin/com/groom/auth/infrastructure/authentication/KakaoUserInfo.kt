@@ -1,6 +1,8 @@
 package com.groom.auth.infrastructure.authentication
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.groom.auth.domain.authentication.CreateOAuth2Authentication
+import com.groom.auth.domain.authentication.OAuth2ProviderName
 
 internal class KakaoUserInfo(
     val id: Long,
@@ -21,4 +23,11 @@ internal class KakaoUserInfo(
             @field:JsonProperty("profile_image_url") @param:JsonProperty("profile_image_url") val profileImageUrl: String,
         )
     }
+
+    fun toCreate() = CreateOAuth2Authentication(
+        providerName = OAuth2ProviderName.KAKAO,
+        providerUserId = id.toString(),
+        nickname = kakaoAccount.profile.nickname,
+        profileImageUrl = kakaoAccount.profile.profileImageUrl
+    )
 }
