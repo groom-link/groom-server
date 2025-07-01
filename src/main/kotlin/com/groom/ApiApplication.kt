@@ -1,6 +1,6 @@
 package com.groom
 
-import com.groom.common.util.JwtUtil
+import com.groom.shared.util.JwtUtil
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
