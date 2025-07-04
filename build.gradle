@@ -1,9 +1,12 @@
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+import org.jlleitschuh.gradle.ktlint.tasks.KtLintCheckTask
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.9.25'
     id 'org.jetbrains.kotlin.plugin.spring' version '1.9.25'
     id 'org.springframework.boot' version '3.5.0'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'org.jetbrains.kotlin.plugin.jpa' version '1.9.25'
+    id 'org.jlleitschuh.gradle.ktlint' version '13.0.0-rc.1'
 }
 
 group = 'com.groom'
@@ -51,4 +54,20 @@ allOpen {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+ktlint {
+    reporters {
+        reporter(ReporterType.JSON)
+    }
+}
+
+afterEvaluate { project ->
+    project.tasks.withType(KtLintCheckTask).configureEach { task ->
+        // root & sub-module ktlintCheck 태스크 의존성 추가
+        task.dependsOn(
+                ':ktlintCheck',
+                ':domain:ktlintCheck',
+                ':persistence:ktlintCheck'
+        )
+    }
 }
